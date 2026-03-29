@@ -6,23 +6,14 @@ import pandas as pd
 
 
 def resolve_base() -> str:
-    """Resolve project base path for both notebook and script execution."""
     cwd = Path.cwd()
-
-    # Running from project root
     if (cwd / "data").exists() and (cwd / "models").exists():
         return str(cwd)
-
-    # Running from notebooks/ folder
     if cwd.name == "notebooks" and (cwd.parent / "data").exists():
         return str(cwd.parent)
-
-    # Running from a module file
     if "__file__" in globals():
         here = Path(__file__).resolve().parent
         return str(here)
-
-    # Safe fallback
     return str(cwd)
 
 

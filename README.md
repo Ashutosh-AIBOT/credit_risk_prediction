@@ -1,40 +1,58 @@
 # Credit Risk Prediction
 
-## Dashboard
+Banking risk intelligence with explainable classification models.
 
-Run with:
+## Recommended GitHub Repo Name
 
-conda run -n ml-env streamlit run 01_credit_risk_prediction/app.py
+enterprise-credit-risk-intelligence
+
+## Domain
+
+Retail banking and underwriting
+
+## Objective
+
+Predict probability of loan default using applicant profile and credit behavior.
+
+## Business Value
+
+Improves approval quality, lowers default losses, and supports policy-level risk governance.
 
 ## Dataset
 
 Inferred Kaggle: https://www.kaggle.com/competitions/home-credit-default-risk
 
-## App Features
+## Run Locally
 
-- Executive overview with business objective and model summary
-- Prediction center (single record + batch CSV)
-- Model benchmark and ranking system
-- Model registry page showing all discovered model artifacts in `models/`
-- Charts gallery from `charts/`
-- Notebook traceability from `notebooks/`
-- Recruiter-impact highlights
+conda run -n ml-env streamlit run app.py
 
-## Notebook Path Setup (Global)
+## Dashboard Features
 
-Use this inside notebooks:
+- Executive overview and business framing
+- Prediction Center (single input + batch CSV)
+- Model ranking leaderboard
+- Model registry (all discovered model artifacts)
+- Charts gallery (auto-load from charts/)
+- Notebook traceability panel
 
-```python
+## Notebook Path Setup
+
+Inside notebooks:
+
 from path_setup import BASE, RAW, PROCESSED, MODELS, CHARTS, load_raw_csv
 
-df = load_raw_csv("application_train.csv")
-```
+Project path helpers:
 
-Shared path utility file:
+- path_utils.py
+- notebooks/path_setup.py
+## Deploy on Render
 
-- `path_utils.py` (project root)
-- `notebooks/path_setup.py` (notebook helper)
+This repo includes render.yaml. Connect repo in Render and deploy.
 
-## Standalone Deployment
+Start command used:
 
-This project contains its own `dashboard_core.py` and `app.py` for independent hosting.
+streamlit run app.py --server.port $PORT --server.address 0.0.0.0
+
+## Git LFS
+
+Large assets are tracked with Git LFS (models, charts, data artifacts).
